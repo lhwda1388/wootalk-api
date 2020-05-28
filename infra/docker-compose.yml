@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+  db:
+    image: mariadb
+    hostname: mariadb
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: qwer123!
+      MYSQL_DATABASE: wootalk
+      MYSQL_USER: wootalk-api
+      MYSQL_PASSWORD: qwer123!
+
+  adminer:
+    image: adminer
+    hostname: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  db-data:

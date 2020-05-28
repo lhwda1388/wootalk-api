@@ -7,7 +7,6 @@
 import app from '../app'
 import debug from 'debug'
 import http, { Server } from 'http'
-import { AddressInfo } from 'net'
 
 const nspDebug: debug.Debugger = debug('wootalk-api:server')
 
