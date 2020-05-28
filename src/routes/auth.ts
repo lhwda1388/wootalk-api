@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express'
 import { User } from '../db/sequelize'
 import config from '../config'
 import jwt from 'jsonwebtoken'
+import bcrypt from 'bcrypt'
 
 const router = express.Router()
 const jwtSecret = config.jwt.secret
@@ -29,22 +30,19 @@ router.get('/signin', async function (
         { expiresIn: '5m' }
       )
       res.cookie('user', token)
-      res.json({
-        code: 200,
+      res.status(200).json({
         access_token: token,
         message: 'ok',
       })
     } else {
-      res.cookie('user', '')
+      res.status(403).cookie('user', '')
       res.json({
-        code: 403,
         access_token: '',
         message: 'no auth',
       })
     }
   } catch (error) {
-    res.json({
-      code: 500,
+    res.status(500).json({
       access_token: '',
       message: error.toString(),
     })
