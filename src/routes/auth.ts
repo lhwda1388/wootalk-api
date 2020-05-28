@@ -35,13 +35,14 @@ router.get('/signin', async function (
         message: 'ok',
       })
     } else {
-      res.status(403).cookie('user', '')
-      res.json({
+      res.cookie('user', '')
+      res.status(403).json({
         access_token: '',
         message: 'no auth',
       })
     }
   } catch (error) {
+    res.cookie('user', '')
     res.status(500).json({
       access_token: '',
       message: error.toString(),
