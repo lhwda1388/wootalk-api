@@ -1,6 +1,6 @@
 export default {
   jwt: {
-    secret: 'secret',
+    secret: 'secretdev'
   },
   db: {
     username: 'wootalk-api',
@@ -8,6 +8,9 @@ export default {
     database: 'wootalk',
     host: 'localhost',
     dialect: 'mariadb',
-    operatorsAliases: false,
+    operatorsAliases: false
   },
+  hash: {
+    saltRounds: 10
+  }
 }

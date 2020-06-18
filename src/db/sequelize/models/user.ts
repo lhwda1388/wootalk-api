@@ -11,24 +11,24 @@ export class User extends Model {
 User.init(
   {
     id: {
-      type: DataTypes.STRING(255),
-      primaryKey: true,
+      type: DataTypes.STRING(20),
+      primaryKey: true
     },
     email: {
       type: DataTypes.STRING(200),
-      allowNull: false,
+      primaryKey: true
     },
     pwd: {
       type: DataTypes.STRING(300),
-      allowNull: false,
+      allowNull: false
     },
     name: {
       type: DataTypes.STRING(300),
-      allowNull: false,
-    },
+      allowNull: false
+    }
   },
   {
     tableName: 'user',
-    sequelize: sequelize,
+    sequelize: sequelize
   }
 )

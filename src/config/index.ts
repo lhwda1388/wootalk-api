@@ -3,7 +3,6 @@ import testConfig from './test'
 import productionConfig from './production'
 const config = () => {
   const env: string = process.env.NODE_ENV || 'development'
-  console.log(`!!!!!!!!!!!!!!!!!!!!!${env}`)
   switch (env) {
     case 'test':
       return testConfig

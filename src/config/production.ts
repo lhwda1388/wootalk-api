@@ -1,6 +1,6 @@
 export default {
   jwt: {
-    secret: 'secret',
+    secret: 'secretprod'
   },
   db: {
     username: 'root',
@@ -8,6 +8,9 @@ export default {
     database: 'database_production',
     host: '127.0.0.1',
     dialect: 'mariadb',
-    operatorsAliases: false,
+    operatorsAliases: false
   },
+  hash: {
+    saltRounds: 10
+  }
 }

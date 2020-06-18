@@ -3,51 +3,58 @@ import { User } from '../db/sequelize'
 import config from '../config'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
+import passport from 'passport'
 
 const router = express.Router()
 const jwtSecret = config.jwt.secret
 
-/* GET users listing. */
-router.get('/signin', async function (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+/* 이메일, 패스워드 로그인 */
+router.post('/signin', async function (req: Request, res: Response, next: NextFunction) {
   try {
-    const email: string = <string>req.query.email
-    const pwd: string = <string>req.query.pwd
+    console.log(`signin jwtSecret : ${jwtSecret}`)
+    const email: string = <string>req.body.email
+    const pwd: string = <string>req.body.pwd
 
     const user: any = await User.findOne({
-      where: { email: email },
+      where: { email: email }
     })
 
-    if (user.pwd === pwd) {
+    const result: boolean = await bcrypt.compare(pwd, user.pwd)
+    if (result) {
       const token: string = jwt.sign(
         {
-          email: user.email,
+          email: user.email
         },
         jwtSecret,
         { expiresIn: '5m' }
       )
-      res.cookie('user', token)
-      res.status(200).json({
+      res.status(200).cookie('token', token).json({
         access_token: token,
-        message: 'ok',
+        message: 'ok'
       })
     } else {
-      res.cookie('user', '')
-      res.status(403).json({
+      res.status(403).cookie('token', '').json({
         access_token: '',
-        message: 'no auth',
+        message: 'no auth'
       })
     }
   } catch (error) {
-    res.cookie('user', '')
-    res.status(500).json({
+    res.status(500).cookie('token', '').json({
       access_token: '',
-      message: error.toString(),
+      message: error.toString()
     })
   }
+})
+
+// 구글인증
+router.get('/signin/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
+
+router.get('/signin/googleRedirect', passport.authenticate('google'), function (req: Request, res: Response) {
+  console.log('redirect!!!')
+  //console.log(req)
+  res.json({
+    message: 'redirect'
+  })
 })
 
 export default router
