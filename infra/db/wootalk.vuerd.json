@@ -1,0 +1,167 @@
+{
+  "canvas": {
+    "width": 2000,
+    "height": 2000,
+    "scrollTop": 0,
+    "scrollLeft": 0,
+    "show": {
+      "tableComment": true,
+      "columnComment": true,
+      "columnDataType": true,
+      "columnDefault": true,
+      "columnAutoIncrement": true,
+      "columnPrimaryKey": true,
+      "columnUnique": true,
+      "columnNotNull": true,
+      "relationship": true
+    },
+    "database": "MariaDB",
+    "databaseName": "wootalk",
+    "canvasType": "ERD",
+    "language": "TypeScript",
+    "tableCase": "pascalCase",
+    "columnCase": "camelCase",
+    "setting": {
+      "relationshipDataTypeSync": true,
+      "columnOrder": [
+        "columnName",
+        "columnDataType",
+        "columnNotNull",
+        "columnUnique",
+        "columnAutoIncrement",
+        "columnDefault",
+        "columnComment"
+      ]
+    }
+  },
+  "table": {
+    "tables": [
+      {
+        "name": "user",
+        "comment": "유저테이블",
+        "columns": [
+          {
+            "name": "id",
+            "comment": "아이디",
+            "dataType": "VARCHAR(20)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 79,
+              "widthDefault": 60
+            },
+            "id": "41ee2ccc-303b-42f7-ac72-0a5e3e7d2f5d"
+          },
+          {
+            "name": "email",
+            "comment": "이메일",
+            "dataType": "VARCHAR(200)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 87,
+              "widthDefault": 60
+            },
+            "id": "00ff97c5-0845-fcdc-877f-a2377c77ec89"
+          },
+          {
+            "name": "pwd",
+            "comment": "비밀번호",
+            "dataType": "VARCHAR(300)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 88,
+              "widthDefault": 60
+            },
+            "id": "1cb6c3bd-2024-d7cd-adfb-be287ce76be7"
+          },
+          {
+            "name": "name",
+            "comment": "이름",
+            "dataType": "VARCHAR(300)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 88,
+              "widthDefault": 60
+            },
+            "id": "bf3c7ef6-fe44-3251-de65-249908c641b5"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 60,
+          "top": 88.5,
+          "zIndex": 119,
+          "widthName": 60,
+          "widthComment": 60
+        },
+        "id": "e7a78525-3c0e-979c-ad77-bfc9f75a4210"
+      }
+    ]
+  },
+  "memo": {
+    "memos": [
+      {
+        "value": "# 유저아이디 시퀀스\nCREATE SEQUENCE user_id_seq START WITH 0 INCREMENT BY 1 MINVALUE=0 CYCLE;\n아이디 규칙 U + 시퀀스(19자리 빈자리는 0으로 채움)\n\n",
+        "id": "a44dde61-7c47-8cfa-b035-d7ce87e93a7f",
+        "ui": {
+          "active": false,
+          "left": 426,
+          "top": 61,
+          "zIndex": 132,
+          "width": 228,
+          "height": 100.5
+        }
+      }
+    ]
+  },
+  "relationship": {
+    "relationships": []
+  }
+}
