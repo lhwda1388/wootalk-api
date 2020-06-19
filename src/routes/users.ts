@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express'
 import passport from 'passport'
+import ResponseEntity from '../entity/response-entity'
 const router = express.Router()
 
 /* GET users listing. */
@@ -16,9 +17,7 @@ router.get('/mypage', passport.authenticate('jwt', { session: false }), function
   res: Response,
   next: NextFunction
 ) {
-  res.status(200).json({
-    message: 'mypage'
-  })
+  res.status(200).json(new ResponseEntity(200, 'mypage', {}))
 })
 
 export default router
