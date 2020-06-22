@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Request, Response, NextFunction } from 'express'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
@@ -7,7 +7,7 @@ import passport from 'passport'
 import config from './config'
 import { VerifiedCallback, StrategyOptions, Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt'
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
-import { Request } from 'express'
+import cors from 'cors'
 
 // router
 import indexRouter from './routes/index'
@@ -64,6 +64,12 @@ passport.deserializeUser(function (obj, cb) {
   cb(null, obj)
 })
 
+app.use(
+  cors({
+    origin: true,
+    credentials: true
+  })
+)
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use('/auth', authRouter)
