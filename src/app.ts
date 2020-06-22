@@ -64,7 +64,12 @@ passport.deserializeUser(function (obj, cb) {
   cb(null, obj)
 })
 
-app.use(cors())
+app.use(
+  cors({
+    origin: true,
+    credentials: true
+  })
+)
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use('/auth', authRouter)
